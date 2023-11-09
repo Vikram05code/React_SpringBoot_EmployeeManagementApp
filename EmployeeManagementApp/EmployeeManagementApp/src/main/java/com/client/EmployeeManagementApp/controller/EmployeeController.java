@@ -24,7 +24,7 @@ public class EmployeeController {
         return new ResponseEntity<>(addedEmployee, HttpStatus.CREATED);
     }
 
-    @GetMapping("/All")
+    @GetMapping("/all")
     public ResponseEntity<List<Employee>> getEmployeeList(){
         List<Employee> employeeList = employeeServices.getAllEmployee();
 
@@ -33,7 +33,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{empId}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable String empId){
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Integer empId){
 
        Employee employee = employeeServices.getEmployeeById(empId);
 
@@ -41,14 +41,14 @@ public class EmployeeController {
     }
 
     @PutMapping ("/{empId}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable String empId, @RequestBody Employee employee){
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Integer empId, @RequestBody Employee employee){
           Employee updatedEmployee = employeeServices.updateEmployeeById(empId, employee);
 
         return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
     }
 
     @DeleteMapping("{empId}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable String empId){
+    public ResponseEntity<String> deleteEmployee(@PathVariable Integer empId){
        String msgs = employeeServices.deleteEmployeeById(empId);
 
         return new ResponseEntity<>(msgs, HttpStatus.OK);

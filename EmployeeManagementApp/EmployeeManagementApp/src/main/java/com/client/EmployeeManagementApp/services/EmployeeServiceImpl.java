@@ -29,21 +29,21 @@ public class EmployeeServiceImpl implements EmployeeServices{
     }
 
     @Override
-    public Employee getEmployeeById(String empId) {
+    public Employee getEmployeeById(Integer empId) {
         Employee employee = employeeRepository.findById(empId).orElseThrow(() -> new ResourceNotFoundExceptions("Employee with given id is not found! "+empId));
         return employee;
     }
 
     @Override
-    public Employee updateEmployeeById(String empId, Employee employee) {
+    public Employee updateEmployeeById(Integer empId, Employee employee) {
 
         Employee employee1 = employeeRepository.findById(empId).orElseThrow(() -> new ResourceNotFoundExceptions("Employee with given id is not found! "+empId));
-        employee = employeeRepository.save(employee1);
-        return employee;
+        employee1 = employeeRepository.save(employee);
+        return employee1;
     }
 
     @Override
-    public String deleteEmployeeById(String empId) {
+    public String deleteEmployeeById(Integer empId) {
         Employee employee1 = employeeRepository.findById(empId).orElseThrow(() -> new ResourceNotFoundExceptions("Employee with given id is not found! "+empId));
         employeeRepository.delete(employee1);
         return "Employee successfully deleted with id: "+empId;

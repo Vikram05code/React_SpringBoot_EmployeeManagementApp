@@ -4,21 +4,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-  private  String employeeId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private  int employeeId;
   private String empName;
   private String empEmail;
   private String empContact;
